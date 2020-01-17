@@ -1,0 +1,65 @@
+{
+	"pages": [ 
+		{
+			"path": "pages/home/home",
+			"style": {
+				"navigationStyle":"custom"
+			}
+		}
+        ,{
+            "path" : "pages/class/class",
+            "style": {
+            	"navigationStyle":"custom"
+            }
+        }
+        ,{
+            "path" : "pages/user/user",
+            "style": {
+            	"navigationStyle":"custom"
+            }
+        }
+        ,{
+            "path" : "pages/compare/compare",
+            "style": {
+            	"navigationStyle":"custom"
+            }
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText" : "",
+		"navigationBarBackgroundColor" : "#ffffff",
+		"backgroundColor" : "#ffffff",
+		"backgroundColorTop":"#ffffff",
+		"backgroundColorBottom":"#ffffff"
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#F06365",
+		"borderStyle": "black",
+		"backgroundColor": "#FFFFFF",
+		"list": [{
+				"pagePath": "pages/home/home",
+				"iconPath":"static/img/tabBar/home.png",
+				"selectedIconPath": "static/img/tabBar/home-on.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/compare/compare",
+				"iconPath": "static/img/tabBar/category.png",
+				"selectedIconPath": "static/img/tabBar/category-on.png",
+				"text": "美妆比价"
+			}, {
+				"pagePath": "pages/class/class",
+				"iconPath": "static/img/tabBar/category.png",
+				"selectedIconPath": "static/img/tabBar/category-on.png",
+				"text": "品牌分类"
+			}, {
+				"pagePath": "pages/user/user",
+				"iconPath": "static/img/tabBar/user.png",
+				"selectedIconPath": "static/img/tabBar/user-on.png",
+				"text": "个人"
+			}
+		]
+	}
+}
