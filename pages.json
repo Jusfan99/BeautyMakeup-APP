@@ -1,6 +1,18 @@
 {
 	"pages": [ 
 		{
+		    "path": "pages/login/login",
+		    "style": {
+				"navigationStyle":"custom"
+			}
+		}
+		,{
+		    "path": "pages/login/register",
+		    "style": {
+				"navigationStyle":"custom"
+			}
+		}
+		,{
 			"path": "pages/home/home",
 			"style": {
 				"navigationStyle":"custom"

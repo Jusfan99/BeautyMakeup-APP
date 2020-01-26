@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+    <head>
+        <meta charset="UTF-8" />
+        <script>
+            var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') ||
+                CSS.supports('top: constant(a)'))
+            document.write(
+                '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' +
+                (coverSupport ? ', viewport-fit=cover' : '') + '" />')
+        </script>
+        <title>View</title>
+        <style>
+            * {
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            input[type="search"]::-webkit-search-cancel-button {
+                display: none;
+            }
+        </style>
+        <script>
+            var __wxConfig = {"debug":false,"appname":"xiaoqw","entryPagePath":"pages/login/login.html","page":{"pages/login/login.html":{"window":{"navigationStyle":"custom","usingComponents":{"w-input":"/components/watch-login/watch-input","w-button":"/components/watch-login/watch-button"}}},"pages/login/register.html":{"window":{"navigationStyle":"custom","usingComponents":{"w-input":"/components/watch-login/watch-input","w-button":"/components/watch-login/watch-button"}}},"pages/home/home.html":{"window":{"navigationStyle":"custom","usingComponents":{"uni-nav-bar":"/components/uni-nav-bar/uni-nav-bar"}}},"pages/class/class.html":{"window":{"navigationStyle":"custom","usingComponents":{"uni-nav-bar":"/components/uni-nav-bar/uni-nav-bar"}}},"pages/user/user.html":{"window":{"navigationStyle":"custom","usingComponents":{"uni-nav-bar":"/components/uni-nav-bar/uni-nav-bar"}}},"pages/compare/compare.html":{"window":{"navigationStyle":"custom","usingComponents":{"uni-nav-bar":"/components/uni-nav-bar/uni-nav-bar"}}}},"global":{"window":{"navigationBarTextStyle":"black","navigationBarTitleText":"","navigationBarBackgroundColor":"#ffffff","backgroundColor":"#ffffff","backgroundColorTop":"#ffffff","backgroundColorBottom":"#ffffff"}},"tabBar":{"color":"#7A7E83","selectedColor":"#F06365","backgroundColor":"#FFFFFF","borderStyle":"black","list":[{"pagePath":"pages/home/home.html","iconPath":"static/img/tabBar/home.png","selectedIconPath":"static/img/tabBar/home-on.png","text":"首页"},{"pagePath":"pages/compare/compare.html","iconPath":"static/img/tabBar/category.png","selectedIconPath":"static/img/tabBar/category-on.png","text":"美妆比价"},{"pagePath":"pages/class/class.html","iconPath":"static/img/tabBar/category.png","selectedIconPath":"static/img/tabBar/category-on.png","text":"品牌分类"},{"pagePath":"pages/user/user.html","iconPath":"static/img/tabBar/user.png","selectedIconPath":"static/img/tabBar/user-on.png","text":"个人"}],"position":"bottom"},"networkTimeout":{"request":60000,"connectSocket":60000,"uploadFile":60000,"downloadFile":60000},"platform":"devtools","pages":["pages/login/login","pages/login/register","pages/home/home","pages/class/class","pages/user/user","pages/compare/compare"],"nvueCompiler":"uni-app","renderer":"auto","splashscreen":{"alwaysShowBeforeRender":true,"autoclose":false},"compilerVersion":"2.5.1","usingComponents":{}}
+        </script>
+        <script>
+            var __id__ = '';
+            window.__dispatchGenerateFunc__ = function(page) {
+                __id__ = page;
+                document.title = page;
+                // window.history.pushState('', '', page);
+                var wxss = page.replace('.html', '.wxss')
+                if (
+                    typeof __wxAppCode__ !== 'undefined' &&
+                    __wxAppCode__.hasOwnProperty(wxss)
+                ) {
+                    var setCssToHead = __wxAppCode__[wxss]
+                    typeof setCssToHead === 'function' && setCssToHead()
+                    document.dispatchEvent(new CustomEvent("generateFuncReady", {
+                        detail: {
+                            generateFunc: $gwx(page.replace('.html', '.wxml'))
+                        }
+                    }));
+                } else {
+                    plus.webview.currentWebview().setJsFile('_www/' + page.replace('.html', '.js'));
+                }
+            };
+        </script>
+        <script src="__uniappes6.js"></script>
+        <script src="uniapp://ready"></script>
+    </head>
+
+    <body>
+        <div></div>
+    </body>
+
+</html>

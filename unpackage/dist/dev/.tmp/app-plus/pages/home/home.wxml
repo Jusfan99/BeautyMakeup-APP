@@ -1,0 +1,1 @@
+<view><view class="example-body"><uni-nav-bar vue-id="1" color="#F06365" title="首页" shadow="true" statusBar="false" bind:__l="__l"></uni-nav-bar></view><view class="content"><image class="logo" src="/static/logo.png"></image><view class="text-area"><text class="title">{{title}}</text></view></view></view>

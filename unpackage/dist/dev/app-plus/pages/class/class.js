@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"example-body { padding: 0; }\n",],undefined,{path:"./pages/class/class.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/class/class.wxml') } }));
