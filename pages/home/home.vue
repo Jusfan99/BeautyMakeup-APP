@@ -1,7 +1,22 @@
 <template>
 	<view>
-		<view>
-			<uni-nav-bar color="#F06365" title="首页" shadow="true" statusBar="false"></uni-nav-bar>
+		<!-- 轮播图 -->
+		<view class="swiper">
+			<view class="swiper-box">
+				<swiper circular="true" autoplay="true" @change="swiperChange">
+					<swiper-item v-for="swiper in swiperList" :key="swiper.id">
+						<image :src="swiper.img" @tap="toSwiper(swiper)"></image>
+					</swiper-item>
+				</swiper>
+				<view class="indicator">
+					<view
+						class="dots"
+						v-for="(swiper, index) in swiperList"
+						:class="[currentSwiper >= index ? 'on' : '']"
+						:key="index"
+					></view>
+				</view>
+			</view>
 		</view>
 		<!-- 分类列表 -->
 		<view class="category-list">
@@ -15,34 +30,170 @@
 				<view class="text">{{ row.name }}</view>
 			</view>
 		</view>
+		<!-- 推荐区 -->
+		<view class="goods-list">
+			<view class="title">今日推荐</view>
+			<view class="product-list">
+				<view
+					class="product"
+					v-for="product in productList"
+					:key="product.goods_id"
+					@tap="toGoods(product)"
+				>
+					<image mode="widthFix" :src="product.img"></image>
+					<view class="name">{{ product.name }}</view>
+					<view class="info">
+						<view class="price">{{ product.price }}</view>
+						<view class="slogan">{{ product.slogan }}</view>
+					</view>
+				</view>
+			</view>
+			<view class="loading-text">{{ loadingText }}</view>
+		</view>
 	</view>
 </template>
 
 <script>
 	import uniNavBar from '@/components/uni-nav-bar/uni-nav-bar.vue'
 	export default {
-		components: {
-			uniNavBar
-		},
 		data() {
 			return {
+				headerTop:null,
+				statusTop:null,
+				currentSwiper: 0,
+				// 轮播图片
+				swiperList: [
+					{ id: 1, src: 'url1', img: '/static/img/1.jpg' },
+					{ id: 2, src: 'url2', img: '/static/img/2.jpg' },
+					{ id: 3, src: 'url3', img: '/static/img/3.jpg' }
+				],
 				// 分类菜单
 				categoryList: [
-					{ id: 1, name: '办公', img: '/static/img/category/1.png' },
-					{ id: 2, name: '家电', img: '/static/img/category/2.png' },
-					{ id: 3, name: '服饰', img: '/static/img/category/3.png' },
-					{ id: 4, name: '日用', img: '/static/img/category/4.png' },
-					{ id: 5, name: '蔬果', img: '/static/img/category/5.png' },
-					{ id: 6, name: '运动', img: '/static/img/category/6.png' },
-					{ id: 7, name: '书籍', img: '/static/img/category/7.png' },
-					{ id: 8, name: '文具', img: '/static/img/category/8.png' }
+					{ id: 1, name: '口红/唇釉', img: '/static/img/category/1.png' },
+					{ id: 2, name: '粉底/气垫', img: '/static/img/category/2.png' },
+					{ id: 3, name: '腮红/高光', img: '/static/img/category/3.png' },
+					{ id: 4, name: '隔离/妆前', img: '/static/img/category/4.png' },
+					{ id: 5, name: '定妆', img: '/static/img/category/5.png' },
+					{ id: 6, name: '防晒', img: '/static/img/category/6.png' },
+					{ id: 7, name: '修容', img: '/static/img/category/7.png' },
+					{ id: 8, name: '眼妆', img: '/static/img/category/8.png' }
+				],
+				//猜你喜欢列表
+				productList: [
+					{
+						goods_id: 0,
+						img: '/static/img/goods/p1.jpg',
+						name: '商品名称',
+						price: '￥168',
+						slogan: '1235人付款'
+					},
+					{
+						goods_id: 1,
+						img: '/static/img/goods/p2.jpg',
+						name: '商品名称',
+						price: '￥168',
+						slogan: '1235人付款'
+					},
+					{
+						goods_id: 2,
+						img: '/static/img/goods/p3.jpg',
+						name: '商品名称',
+						price: '￥168',
+						slogan: '1235人付款'
+					},
+					{
+						goods_id: 3,
+						img: '/static/img/goods/p4.jpg',
+						name: '商品名称',
+						price: '￥168',
+						slogan: '1235人付款'
+					},
+					{
+						goods_id: 4,
+						img: '/static/img/goods/p5.jpg',
+						name: '商品名称',
+						price: '￥168',
+						slogan: '1235人付款'
+					},
+					{
+						goods_id: 5,
+						img: '/static/img/goods/p6.jpg',
+						name: '商品名称',
+						price: '￥168',
+						slogan: '1235人付款'
+					},
+					{
+						goods_id: 6,
+						img: '/static/img/goods/p7.jpg',
+						name: '商品名称',
+						price: '￥168',
+						slogan: '1235人付款'
+					},
+					{
+						goods_id: 7,
+						img: '/static/img/goods/p8.jpg',
+						name: '商品名称',
+						price: '￥168',
+						slogan: '1235人付款'
+					},
+					{
+						goods_id: 8,
+						img: '/static/img/goods/p9.jpg',
+						name: '商品名称',
+						price: '￥168',
+						slogan: '1235人付款'
+					},
+					{
+						goods_id: 9,
+						img: '/static/img/goods/p10.jpg',
+						name: '商品名称',
+						price: '￥168',
+						slogan: '1235人付款'
+					}
 				]
 			}
 		},
+		//下拉刷新，需要自己在page.json文件中配置开启页面下拉刷新 "enablePullDownRefresh": true
+		onPullDownRefresh() {
+			setTimeout(function() {
+				uni.stopPullDownRefresh();
+			}, 1000);
+		},
+		//上拉加载，需要自己在page.json文件中配置"onReachBottomDistance"
+		onReachBottom() {
+			let len = this.productList.length;
+			if (len >= 30) {
+				this.loadingText = '到底啦！';
+				return false;
+			}
+			// 演示,随机加入商品,生成环境请替换为ajax请求
+			let end_goods_id = this.productList[len - 1].goods_id;
+			for (let i = 1; i <= 10; i++) {
+				let goods_id = end_goods_id + i;
+				let p = {
+					goods_id: goods_id,
+					img:
+						'/static/img/goods/p' + (goods_id % 10 == 0 ? 10 : goods_id % 10) + '.jpg',
+					name: '商品名称',
+					price: '￥168',
+					slogan: '1235人付款'
+				};
+				this.productList.push(p);
+			}
+		},
 		onLoad() {
-
+			//加载活动专区
+			this.loadPromotion();
 		},
 		methods: {
+			//轮播图跳转
+			toSwiper(e) {
+				uni.showToast({ title: e.src, icon: 'none' });
+			},
+			//轮播图指示器
+			swiperChange(event) {
+				this.currentSwiper = event.detail.current;
+			},
 			//分类跳转
 			toCategory(e) {
 				//uni.showToast({title: e.name,icon:"none"});
@@ -51,22 +202,93 @@
 					url: '../../goods/goods-list/goods-list?cid='+e.id+'&name='+e.name
 				});
 			},
+			//商品跳转
+			toGoods(e) {
+				uni.showToast({ title: '商品' + e.goods_id, icon: 'none' });
+				uni.navigateTo({
+					url: '../../goods/goods'
+				});
+			}
 		}
 	}
 </script>
 
 <style lang="scss">
+	.title {
+		font-size: 36rpx;
+		color: #8f8f94;
+	}
+	.pullDown-effects{
+		position: fixed;
+		//top: calc(100rpx - 36vw);
+		top: 0;
+		z-index: 9;
+		width: 100%;
+		height: 36vw;
+		/*  #ifdef  APP-PLUS  */
+		padding-top: var(--status-bar-height);
+		/*  #endif  */
+		image{
+			width: 100%;
+			height: 36vw;
+		}
+	}
+	.swiper {
+		width: 100%;
+		margin-top: 10rpx;
+		display: flex;
+		justify-content: center;
+		.swiper-box {
+			width: 92%;
+			height: 210rpx;
+			overflow: hidden;
+			border-radius: 20rpx;
+			box-shadow: 0rpx 8rpx 25rpx rgba(0, 0, 0, 0.2);
+			//兼容ios，微信小程序
+			position: relative;
+			z-index: 1;
+			swiper {
+				width: 100%;
+				height: 30.7vw;
+				swiper-item {
+					image {
+						width: 100%;
+						height: 30.7vw;
+					}
+				}
+			}
+			.indicator {
+				position: absolute;
+				bottom: 20rpx;
+				left: 20rpx;
+				background-color: rgba(255, 255, 255, 0.4);
+				width: 150rpx;
+				height: 5rpx;
+				border-radius: 3rpx;
+				overflow: hidden;
+				display: flex;
+				.dots {
+					width: 0rpx;
+					background-color: rgba(255, 255, 255, 1);
+					transition: all 0.3s ease-out;
+					&.on {
+						width: (100%/3);
+					}
+				}
+			}
+		}
+	}
 	.category-list {
 		width: 92%;
 		margin: 0 4%;
-		padding: 0 0 30upx 0;
-		border-bottom: solid 2upx #f6f6f6;
+		padding: 0 0 30rpx 0;
+		border-bottom: solid 2rpx #f6f6f6;
 		display: flex;
 		justify-content: space-between;
 		flex-wrap: wrap;
 		.category {
 			width: 25%;
-			margin-top: 50upx;
+			margin-top: 50rpx;
 			display: flex;
 			flex-wrap: wrap;
 			.img {
@@ -79,17 +301,80 @@
 				}
 			}
 			.text {
-				margin-top: 16upx;
+				margin-top: 16rpx;
 				width: 100%;
 				display: flex;
 				justify-content: center;
-				font-size: 24upx;
+				font-size: 24rpx;
 				color: #3c3c3c;
 			}
 		}
 	}
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
+	.goods-list {
+		width: 95%;
+		margin: 3% 3%;
+		.title {
+			width: 100%;
+			height: 60rpx;
+			font-size: 34rpx;
+			font-weight: 600;
+			text-align: center;
+			margin-bottom: 2%;
+			color: #000000;
+		}
+		.loading-text {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 60upx;
+			color: #979797;
+			font-size: 24upx;
+		}
+		.product-list {
+			width: 92%;
+			padding: 0 4% 0 4%;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			.product {
+				width: 48%;
+				border-radius: 20rpx;
+				background-color: #fff;
+				margin: 0 0 30rpx 0;
+				box-shadow: 0rpx 5rpx 25rpx rgba(0, 0, 0, 0.1);
+				image {
+					width: 100%;
+					border-radius: 20rpx 20rpx 0 0;
+				}
+				.name {
+					width: 92%;
+					padding: 10rpx 4%;
+					display: -webkit-box;
+					-webkit-box-orient: vertical;
+					-webkit-line-clamp: 2;
+					text-align: justify;
+					overflow: hidden;
+					font-size: 30rpx;
+				}
+				.info {
+					display: flex;
+					justify-content: space-between;
+					align-items: flex-end;
+					width: 92%;
+					padding: 10rpx 4% 15rpx 4%;
+	
+					.price {
+						color: #e65339;
+						font-size: 30rpx;
+						font-weight: 600;
+					}
+					.slogan {
+						color: #807c87;
+						font-size: 24rpx;
+					}
+				}
+			}
+		}
 	}
 </style>
