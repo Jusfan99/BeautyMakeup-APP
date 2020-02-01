@@ -1,6 +1,6 @@
 {
-  "navigationStyle": "custom",
-  "usingComponents": {
-    "uni-nav-bar": "/components/uni-nav-bar/uni-nav-bar"
-  }
+  "navigationBarTitleText": "拟胭脂",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "usingComponents": {}
 }

@@ -4,9 +4,6 @@
 			"path": "pages/home/home",
 			"style": {
 				"navigationBarTitleText": "拟胭脂",
-				"navigationBarShadow":{
-					"colorType":"grey"
-				},
 				"enablePullDownRefresh": true,
 				"onReachBottomDistance":50
 			}
@@ -23,13 +20,7 @@
             	"navigationBarTitleText": "个人中心"
             }
         }
-        ,{
-            "path" : "pages/compare/compare",
-            "style": {
-            	"navigationBarTitleText": "美妆比价"
-            }
-        },
-		{
+		,{
 		    "path": "pages/login/login",
 		    "style": {
 				"navigationStyle":"custom"
@@ -45,10 +36,10 @@
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "拟胭脂",
-		"navigationBarBackgroundColor": "#FFFFFF",
-		"backgroundColor" : "#ffffff",
-		"backgroundColorTop":"#ffffff",
-		"backgroundColorBottom":"#ffffff"
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor" : "#F8F8F8",
+		"backgroundColorTop":"#F8F8F8",
+		"backgroundColorBottom":"#F8F8F8"
 	},
 	"tabBar": {
 		"color": "#7A7E83",
@@ -60,13 +51,7 @@
 				"iconPath":"static/img/tabBar/home.png",
 				"selectedIconPath": "static/img/tabBar/home-on.png",
 				"text": "首页"
-			},
-			{
-				"pagePath": "pages/compare/compare",
-				"iconPath": "static/img/tabBar/category.png",
-				"selectedIconPath": "static/img/tabBar/category-on.png",
-				"text": "美妆比价"
-			}, {
+			},{
 				"pagePath": "pages/class/class",
 				"iconPath": "static/img/tabBar/category.png",
 				"selectedIconPath": "static/img/tabBar/category-on.png",

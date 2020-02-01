@@ -954,8 +954,8 @@
 	box-shadow:0rpx 0rpx 60rpx 0rpx rgba(0,0,0,0.1);
 	border-radius:50%;
 	background-color: #ffffff; 
-	margin-top: 200rpx;
-	margin-bottom: 80rpx;
+	margin-top: 20%;
+	margin-bottom: 10%;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -976,7 +976,7 @@
 	        flex-direction: column;
 	padding-left: 70rpx;
 	padding-right: 70rpx;
-	margin-bottom: 80rpx;
+	margin-bottom: 10%;
 }
 .wxbutton {
 	color: #FFFFFF;
@@ -991,7 +991,7 @@
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
-	margin-bottom: 80rpx;
+	margin-bottom: 10%;
 }
 
 /* 底部 */
@@ -1010,7 +1010,7 @@
 	-webkit-align-items: center;
 	        align-items: center;
 	font-size: 28rpx;
-	margin-top: 80rpx;
+	margin-top: 10%;
 	color: rgba(0,0,0,0.7);
 	text-align: center;
 	height: 40rpx;

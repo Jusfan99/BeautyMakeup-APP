@@ -1,5 +1,43 @@
 
-.example-body {
-	padding: 0;
+.VerticalNav.nav {
+	width: 200rpx;
+	white-space: initial;
+	background-color: #FFFFFF;
+}
+.VerticalNav.nav .cu-item {
+	width: 100%;
+	text-align: center;
+	background-color: #FFFFFF;
+	margin: 0;
+	border: none;
+	height: 50px;
+	position: relative;
+}
+.VerticalNav.nav .cu-item.cur {
+	background-color: #F8F8F8;
+}
+.VerticalNav.nav .cu-item.cur::after {
+	color: #f06365;
+	content: "";
+	width: 8rpx;
+	height: 30rpx;
+	border-radius: 10rpx 0 0 10rpx;
+	position: absolute;
+	background-color: currentColor;
+	top: 0;
+	right: 0rpx;
+	bottom: 0;
+	margin: auto;
+}
+.VerticalBox {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.VerticalMain {
+	background-color: #F8F8F8;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	        flex: 1;
 }
 

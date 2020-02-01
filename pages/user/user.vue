@@ -10,7 +10,7 @@
 					</view>
 					<!-- 授权登录框 -->
 					<view class="right">
-						<button class="getbutton" type="primary" open-type="getUserInfo" @getuserinfo="mpGetUserInfo">授权登录</button>
+						<button class="getbutton animation-scale-up" open-type="getUserInfo" @getuserinfo="mpGetUserInfo">授权登录</button>
 					</view>
 				</view>
 			</block>
@@ -28,9 +28,44 @@
 				</view>
 			</block>
 		</view>
-		<!-- 退出登录 -->
-		<view class="setting">
-			<button type="default" class="exit" @click="clear">退出登录</button>
+		
+		<!-- 功能列表 -->
+		<view class="cu-list menu card-menu sm-border" style="margin-top: 40rpx; box-shadow:0px 0px  10px 0px #d0d0d0;">
+			<view class="cu-item" :class="menuArrow?'arrow':''">
+				<button class="cu-btn content" @tap="myFavor">
+					<text class="cuIcon-favorfill text-red"></text>
+					<text class="text-grey text-lg" style="margin-left: 20rpx;">我的收藏</text>
+				</button>
+			</view>
+			<view class="cu-item" :class="menuArrow?'arrow':''">
+				<button class="cu-btn content">
+					<text class="cuIcon-friendfill text-blue"></text>
+					<text class="text-grey text-lg" style="margin-left: 20rpx;">关于我们</text>
+				</button>
+			</view>
+			<view class="cu-item" :class="menuArrow?'arrow':''">
+				<button class="cu-btn content" @tap="showModal" data-target="bottomModal">
+					<text class="cuIcon-markfill text-cyan"></text>
+					<text class="text-grey text-lg" style="margin-left: 20rpx;">获得帮助</text>
+				</button>
+			</view>
+			<view class="cu-modal bottom-modal" :class="modalName=='bottomModal'?'show':''">
+				<view class="cu-dialog">
+					<view class="cu-bar bg-white">
+						<button style="margin-left: 15rpx;" class="cu-btn bg-white text-green" open-type="contact">确定</button>
+						<button style="margin-right: 15rpx;" class="cu-btn bg-white text-mine" @tap="hideModal">取消</button>
+					</view>
+					<view class="padding-xl" style="font-size: 28rpx;">
+						将前往拟胭脂客服对话窗口
+					</view>
+				</view>
+			</view>
+			<view class="cu-item" :class="menuArrow?'arrow':''">
+				<button class="cu-btn content" @click="clear">
+					<text class="cuIcon-exit text-mine"></text>
+					<text class="text-grey text-lg" style="margin-left: 20rpx;">退出登录</text>
+				</button>
+			</view>
 		</view>
 	</view>
 </template>
@@ -47,7 +82,8 @@
 				title: 'getUserInfo',
 				hasUserInfo: false,
 				//个人信息
-				userInfo: {}
+				userInfo: {},
+				modalName: null
 			}
 		},
 		computed: {
@@ -59,6 +95,15 @@
 	
 		},
 		methods: {
+			showModal(e) {
+				this.modalName = e.currentTarget.dataset.target
+			},
+			hideModal(e) {
+				this.modalName = null
+			},
+			myFavor(e) {
+				uni.showToast({ title: '暂不支持!',icon: 'none' });
+			},
 			// 获取用户信息 API 在小程序可直接使用
 			getUserInfo() {
 				uni.getUserInfo({
@@ -172,9 +217,10 @@
 					font-size: 28rpx;
 				}
 				.getbutton{
+					border: none;
 					color: #F06365;
 					width: 300rpx;
-					border-radius: 20rpx;
+					border-radius: 50rpx;
 					background-color: #FFFFFF;
 					box-shadow: 0rpx 8rpx 25rpx rgba(0, 0, 0, 0.2);
 					margin-top: 25rpx;
@@ -183,16 +229,14 @@
 			}
 		}
 	}
-	.setting{
-		margin-top: 80rpx;
+	.userlist{
+		width: 100%;
+		margin-top: 20rpx;
+		display: flex;
 		justify-content: center;
-		.exit{
-			color: #F06365;
-			width: 300rpx;
-			border-radius: 20rpx;
-			background-color: #FFFFFF;
-			box-shadow: 0rpx 0rpx 25rpx rgba(0, 0, 0, 0.2);
-			margin-top: 25rpx;
+		.listbox{
+			width: 92%;
+			box-shadow: 0rpx 8rpx 25rpx rgba(0, 0, 0, 0.2);
 		}
 	}
 </style>

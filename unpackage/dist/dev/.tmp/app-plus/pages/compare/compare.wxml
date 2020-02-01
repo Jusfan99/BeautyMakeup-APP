@@ -1,1 +1,0 @@
-<view><view class="example-body"><uni-nav-bar vue-id="1" color="#F06365" title="比价" shadow="true" statusBar="false" bind:__l="__l"></uni-nav-bar></view></view>

@@ -42,7 +42,7 @@
     "statusbar": {
       "immersed": "supportedDevice",
       "style": "dark",
-      "background": "#ffffff"
+      "background": "#F8F8F8"
     },
     "usingComponents": true,
     "nvueCompiler": "uni-app",
@@ -111,12 +111,6 @@
           "text": "首页"
         },
         {
-          "pagePath": "pages/compare/compare",
-          "iconPath": "static/img/tabBar/category.png",
-          "selectedIconPath": "static/img/tabBar/category-on.png",
-          "text": "美妆比价"
-        },
-        {
           "pagePath": "pages/class/class",
           "iconPath": "static/img/tabBar/category.png",
           "selectedIconPath": "static/img/tabBar/category-on.png",
@@ -129,7 +123,11 @@
           "text": "个人"
         }
       ],
-      "height": "50px"
+      "height": "50px",
+      "child": [
+        "lauchwebview"
+      ],
+      "selected": 0
     }
   }
 }

@@ -1,6 +1,4 @@
 {
-  "navigationStyle": "custom",
-  "usingComponents": {
-    "uni-nav-bar": "/components/uni-nav-bar/uni-nav-bar"
-  }
+  "navigationBarTitleText": "品牌分类",
+  "usingComponents": {}
 }

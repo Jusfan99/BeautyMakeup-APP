@@ -69,83 +69,83 @@
 				],
 				// 分类菜单
 				categoryList: [
-					{ id: 1, name: '口红/唇釉', img: '/static/img/category/1.png' },
-					{ id: 2, name: '粉底/气垫', img: '/static/img/category/2.png' },
-					{ id: 3, name: '腮红/高光', img: '/static/img/category/3.png' },
-					{ id: 4, name: '隔离/妆前', img: '/static/img/category/4.png' },
-					{ id: 5, name: '定妆', img: '/static/img/category/5.png' },
-					{ id: 6, name: '防晒', img: '/static/img/category/6.png' },
-					{ id: 7, name: '修容', img: '/static/img/category/7.png' },
-					{ id: 8, name: '眼妆', img: '/static/img/category/8.png' }
+					{ id: 1, name: '口红/唇釉', img: 'http://120.55.87.80/img/category/1.jpg' },
+					{ id: 2, name: '粉底/气垫', img: 'http://120.55.87.80/img/category/2.jpg' },
+					{ id: 3, name: '腮红/高光', img: 'http://120.55.87.80/img/category/3.jpg' },
+					{ id: 4, name: '隔离/妆前', img: 'http://120.55.87.80/img/category/4.jpg' },
+					{ id: 5, name: '定妆', img: 'http://120.55.87.80/img/category/5.jpg' },
+					{ id: 6, name: '防晒', img: 'http://120.55.87.80/img/category/6.jpg' },
+					{ id: 7, name: '修容', img: 'http://120.55.87.80/img/category/7.jpg' },
+					{ id: 8, name: '眼妆', img: 'http://120.55.87.80/img/category/8.jpg' }
 				],
 				//猜你喜欢列表
 				productList: [
 					{
 						goods_id: 0,
-						img: '/static/img/goods/p1.jpg',
+						img: 'http://120.55.87.80/img/recommand/1.jpg',
 						name: '商品名称',
 						price: '￥168',
 						slogan: '1235人付款'
 					},
 					{
 						goods_id: 1,
-						img: '/static/img/goods/p2.jpg',
+						img: 'http://120.55.87.80/img/recommand/2.jpg',
 						name: '商品名称',
 						price: '￥168',
 						slogan: '1235人付款'
 					},
 					{
 						goods_id: 2,
-						img: '/static/img/goods/p3.jpg',
+						img: 'http://120.55.87.80/img/recommand/3.jpg',
 						name: '商品名称',
 						price: '￥168',
 						slogan: '1235人付款'
 					},
 					{
 						goods_id: 3,
-						img: '/static/img/goods/p4.jpg',
+						img: 'http://120.55.87.80/img/recommand/4.jpg',
 						name: '商品名称',
 						price: '￥168',
 						slogan: '1235人付款'
 					},
 					{
 						goods_id: 4,
-						img: '/static/img/goods/p5.jpg',
+						img: 'http://120.55.87.80/img/recommand/5.jpg',
 						name: '商品名称',
 						price: '￥168',
 						slogan: '1235人付款'
 					},
 					{
 						goods_id: 5,
-						img: '/static/img/goods/p6.jpg',
+						img: 'http://120.55.87.80/img/recommand/6.jpg',
 						name: '商品名称',
 						price: '￥168',
 						slogan: '1235人付款'
 					},
 					{
 						goods_id: 6,
-						img: '/static/img/goods/p7.jpg',
+						img: 'http://120.55.87.80/img/recommand/7.jpg',
 						name: '商品名称',
 						price: '￥168',
 						slogan: '1235人付款'
 					},
 					{
 						goods_id: 7,
-						img: '/static/img/goods/p8.jpg',
+						img: 'http://120.55.87.80/img/recommand/8.jpg',
 						name: '商品名称',
 						price: '￥168',
 						slogan: '1235人付款'
 					},
 					{
 						goods_id: 8,
-						img: '/static/img/goods/p9.jpg',
+						img: 'http://120.55.87.80/img/recommand/9.jpg',
 						name: '商品名称',
 						price: '￥168',
 						slogan: '1235人付款'
 					},
 					{
 						goods_id: 9,
-						img: '/static/img/goods/p10.jpg',
+						img: 'http://120.55.87.80/img/recommand/10.jpg',
 						name: '商品名称',
 						price: '￥168',
 						slogan: '1235人付款'
@@ -173,7 +173,7 @@
 				let p = {
 					goods_id: goods_id,
 					img:
-						'/static/img/goods/p' + (goods_id % 10 == 0 ? 10 : goods_id % 10) + '.jpg',
+						'http://120.55.87.80/img/recommand/' + (goods_id % 10 == 0 ? 10 : goods_id % 10) + '.jpg',
 					name: '商品名称',
 					price: '￥168',
 					slogan: '1235人付款'
@@ -240,7 +240,7 @@
 		justify-content: center;
 		.swiper-box {
 			width: 92%;
-			height: 210rpx;
+			height: 208rpx;
 			overflow: hidden;
 			border-radius: 20rpx;
 			box-shadow: 0rpx 8rpx 25rpx rgba(0, 0, 0, 0.2);
@@ -296,8 +296,10 @@
 				display: flex;
 				justify-content: center;
 				image {
-					width: 9vw;
-					height: 9vw;
+					border-radius: 100%;
+					width: 13vw;
+					height: 13vw;
+					
 				}
 			}
 			.text {
@@ -313,6 +315,7 @@
 	.goods-list {
 		width: 95%;
 		margin: 3% 3%;
+		justify-content: center;
 		.title {
 			width: 100%;
 			height: 60rpx;
@@ -332,7 +335,7 @@
 			font-size: 24upx;
 		}
 		.product-list {
-			width: 92%;
+			width: 100%;
 			padding: 0 4% 0 4%;
 			display: flex;
 			justify-content: space-between;
@@ -342,7 +345,7 @@
 				border-radius: 20rpx;
 				background-color: #fff;
 				margin: 0 0 30rpx 0;
-				box-shadow: 0rpx 5rpx 25rpx rgba(0, 0, 0, 0.1);
+				box-shadow:0px 0px  10px 0px #d0d0d0;
 				image {
 					width: 100%;
 					border-radius: 20rpx 20rpx 0 0;
