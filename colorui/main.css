@@ -34,17 +34,17 @@ image {
 }
 
 .round {
-	border-radius: 20rpx;
+	border-radius: 50rpx;
 }
 
 .round-top {
-	border-top-left-radius: 20rpx;
-	border-top-right-radius: 20rpx;
+	border-top-left-radius: 50rpx;
+	border-top-right-radius: 50rpx;
 }
 
 .round-bottom {
-	border-bottom-left-radius: 20rpx;
-	border-bottom-right-radius: 20rpx;
+	border-bottom-left-radius: 50rpx;
+	border-bottom-right-radius: 50rpx;
 }
 
 /* ==================
@@ -1290,7 +1290,7 @@ button.cuIcon.lg {
 .cu-list.menu>.cu-item {
 	position: relative;
 	display: flex;
-	padding: 0 30upx;
+	padding: 0 50rpx;
 	min-height: 100upx;
 	background-color: #ffffff;
 	justify-content: space-between;
@@ -1331,7 +1331,7 @@ button.cuIcon.lg {
 .cu-list.menu>.cu-item.arrow:before {
 	position: absolute;
 	top: 0;
-	right: 30upx;
+	right: 50upx;
 	bottom: 0;
 	display: block;
 	margin: auto;
@@ -1481,7 +1481,7 @@ button.cuIcon.lg {
 	overflow: hidden;
 	margin-right: 30upx;
 	margin-left: 30upx;
-	border-radius: 20upx
+	border-radius: 50upx
 }
 
 
@@ -3415,7 +3415,7 @@ scroll-view.cu-steps .cu-item {
 }
 
 .bg-mine {
-	background-color: #F06365;
+	background-color: #CF6C7E;
 	color: #ffffff;
 }
 
@@ -3492,6 +3492,12 @@ scroll-view.cu-steps .cu-item {
 .bg-white {
 	background-color: #ffffff;
 	color: #666666;
+}
+
+.bg-nav {
+	background-color: #F8F8F8;
+	color: #000000;
+	font-weight: 600;
 }
 
 .bg-shadeTop {
@@ -3930,5 +3936,5 @@ scroll-view.cu-steps .cu-item {
 .text-mine,
 .line-mine,
 .lines-mine {
-	color: #f06365;
+	color: #CF6C7E;
 }

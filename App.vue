@@ -1,7 +1,8 @@
 <script>
+	import Vue from 'vue'
 	export default {
 		onLaunch: function() {
-			console.log('App Launch')
+		    
 		},
 		onShow: function() {
 			console.log('App Show')
