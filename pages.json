@@ -41,6 +41,11 @@
 		"style": {
 			"navigationStyle": "custom"
 		}
+	}, {
+		"path": "pages/shopweb/shopweb",
+		"style": {
+			"navigationBarTitleText": "SHOP"
+		}
 	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

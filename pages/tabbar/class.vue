@@ -134,7 +134,7 @@
 							},
 							{
 								enname: 'Foundation',
-								name: '兰蔻/LANCOME',
+								name: '兰蔻（LANCOME）',
 								img: '2.jpg'
 							},
 							{
@@ -144,26 +144,27 @@
 							},
 							{
 								enname: 'Foundation',
-								name: 'YSL/圣罗兰',
+								name: '圣罗兰（YSL）',
 								img: '7.jpg'
 							},
 							{
 								enname: 'Foundation',
-								name: '阿玛尼/ARMANI',
+								name: '阿玛尼（ARMANI）',
 								img: '11.jpg'
 							},
 							{
 								enname: 'Foundation',
-								name: '迪奥/Dior',
+								name: '迪奥（Dior）',
 								img: '4.jpg'
 							},
 							{
 								enname: 'Foundation',
-								name: 'BobbiBrown',
+								name: 'Bobbi Brown',
 								img: '8.jpg'
 							},
 							{
-								name: '魅可/MAC',
+								enname: 'Foundation',
+								name: '魅可',
 								img: '10.jpg'
 							},
 							{
@@ -173,7 +174,7 @@
 							},
 							{
 								enname: 'Foundation',
-								name: '纪梵希/GIVECHY',
+								name: '纪梵希',
 								img: '6.jpg'
 							},
 							{
@@ -183,7 +184,7 @@
 							},
 							{
 								enname: 'Foundation',
-								name: 'Lamer',
+								name: 'LA MER',
 								img: '16.jpg'
 							},
 							{

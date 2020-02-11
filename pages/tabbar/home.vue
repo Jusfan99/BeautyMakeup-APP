@@ -26,16 +26,21 @@
 		<view class="goods-list">
 			<view class="title">今日推荐</view>
 			<view class="product-list">
-				<view class="product" v-for="product in productList" :key="product.goods_id" @tap="toGoods(product)">
+				<view class="product" v-for="(product,index) in productList" :key="index" @tap="toGoods(product)">
 					<image mode="widthFix" :src="product.img"></image>
 					<view class="name">{{ product.name }}</view>
 				</view>
 			</view>
+			<view class="bottom-text">到底啦!</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	import Vuex from "vuex";
+	import axios from "axios";
+	import http from '@/utils/http.js'
+
 	export default {
 		data() {
 			return {
@@ -110,112 +115,24 @@
 					}
 				],
 				//猜你喜欢列表
-				productList: [{
-						goods_id: 0,
-						img: 'http://120.55.87.80/img/recommand/1.jpg',
-						name: '商品名称',
-						price: '￥168',
-						slogan: '1235人付款'
-					},
-					{
-						goods_id: 1,
-						img: 'http://120.55.87.80/img/recommand/2.jpg',
-						name: '商品名称',
-						price: '￥168',
-						slogan: '1235人付款'
-					},
-					{
-						goods_id: 2,
-						img: 'http://120.55.87.80/img/recommand/3.jpg',
-						name: '商品名称',
-						price: '￥168',
-						slogan: '1235人付款'
-					},
-					{
-						goods_id: 3,
-						img: 'http://120.55.87.80/img/recommand/4.jpg',
-						name: '商品名称',
-						price: '￥168',
-						slogan: '1235人付款'
-					},
-					{
-						goods_id: 4,
-						img: 'http://120.55.87.80/img/recommand/5.jpg',
-						name: '商品名称',
-						price: '￥168',
-						slogan: '1235人付款'
-					},
-					{
-						goods_id: 5,
-						img: 'http://120.55.87.80/img/recommand/6.jpg',
-						name: '商品名称',
-						price: '￥168',
-						slogan: '1235人付款'
-					},
-					{
-						goods_id: 6,
-						img: 'http://120.55.87.80/img/recommand/7.jpg',
-						name: '商品名称',
-						price: '￥168',
-						slogan: '1235人付款'
-					},
-					{
-						goods_id: 7,
-						img: 'http://120.55.87.80/img/recommand/8.jpg',
-						name: '商品名称',
-						price: '￥168',
-						slogan: '1235人付款'
-					},
-					{
-						goods_id: 8,
-						img: 'http://120.55.87.80/img/recommand/9.jpg',
-						name: '商品名称',
-						price: '￥168',
-						slogan: '1235人付款'
-					},
-					{
-						goods_id: 9,
-						img: 'http://120.55.87.80/img/recommand/10.jpg',
-						name: '商品名称',
-						price: '￥168',
-						slogan: '1235人付款'
-					}
-				]
+				productList: []
 			}
+		},
+		//此处用created相当于对前端页面数据进行初始化
+		created() {
+			var address = 'http://120.55.87.80/server/Recommend.php';
+			http.post(address, 'Recommend').then(res => {
+				//这里是ES6的写法，get请求的地址
+				this.productList = res.data; //获取数据  
+				console.log('success');
+				console.log(this.productList);
+			})
 		},
 		//下拉刷新，需要自己在page.json文件中配置开启页面下拉刷新 "enablePullDownRefresh": true
 		onPullDownRefresh() {
 			setTimeout(function() {
 				uni.stopPullDownRefresh();
 			}, 1000);
-		},
-		//上拉加载，需要自己在page.json文件中配置"onReachBottomDistance"
-		onReachBottom() {
-			let len = this.productList.length;
-			if (len >= 30) {
-				uni.showToast({
-					title: '到底啦',
-					icon: 'none'
-				});
-				return false;
-			}
-			// 演示,随机加入商品,生成环境请替换为ajax请求
-			let end_goods_id = this.productList[len - 1].goods_id;
-			for (let i = 1; i <= 10; i++) {
-				let goods_id = end_goods_id + i;
-				let p = {
-					goods_id: goods_id,
-					img: 'http://120.55.87.80/img/recommand/' + (goods_id % 10 == 0 ? 10 : goods_id % 10) + '.jpg',
-					name: '商品名称',
-					price: '￥168',
-					slogan: '1235人付款'
-				};
-				this.productList.push(p);
-			}
-		},
-		onLoad() {
-			//加载活动专区
-			this.loadPromotion();
 		},
 		methods: {
 			//轮播图跳转
@@ -231,7 +148,6 @@
 			},
 			//分类跳转
 			toCategory(e) {
-				//uni.showToast({title: e.name,icon:"none"});
 				uni.setStorageSync('enName', e.enname);
 				uni.setStorageSync('catName', e.name);
 				uni.navigateTo({
@@ -242,12 +158,10 @@
 			},
 			//商品跳转
 			toGoods(e) {
-				uni.showToast({
-					title: '商品' + e.goods_id,
-					icon: 'none'
-				});
+				uni.setStorageSync('PHP', 'RecGoods');
+				uni.setStorageSync('goodsName', e.name);
 				uni.navigateTo({
-					url: '../../goods/goods',
+					url: "../goods/goods",
 					animationType: 'pop-in',
 					animationDuration: 200
 				});
@@ -370,7 +284,7 @@
 
 	.goods-list {
 		width: 95%;
-		margin: 3% 3%;
+		margin: 0 3%;
 		justify-content: center;
 
 		.title {
@@ -379,18 +293,8 @@
 			font-size: 34rpx;
 			font-weight: 600;
 			text-align: center;
-			margin-bottom: 2%;
-			color: #000000;
-		}
-
-		.loading-text {
-			width: 100%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 60upx;
-			color: #979797;
-			font-size: 24upx;
+			margin-bottom: 3%;
+			color: #CF6C7E;
 		}
 
 		.product-list {
@@ -409,20 +313,29 @@
 
 				image {
 					width: 100%;
+					padding: 6% 4%;
 					border-radius: 50rpx 50rpx 0 0;
 				}
 
 				.name {
 					width: 100%;
-					padding: 4% 4%;
-					display: -webkit-box;
-					-webkit-box-orient: vertical;
-					-webkit-line-clamp: 2;
+					padding: 4% 4% 4% 4%;
 					text-align: center;
+					justify-content: space-between;
 					overflow: hidden;
 					font-size: 30rpx;
 				}
 			}
+		}
+
+		.bottom-text {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 60upx;
+			color: #979797;
+			font-size: 24upx;
 		}
 	}
 </style>
