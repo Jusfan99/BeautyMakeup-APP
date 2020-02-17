@@ -52,8 +52,9 @@
 			}
 		},
 		created() { //此处用created相当于对前端页面数据进行初始化  
+			var calss = uni.getStorageSync('enName')
 			var value = uni.getStorageSync('goodsName');
-			var address = 'http://120.55.87.80/server/' + uni.getStorageSync('PHP') + '.php';
+			var address = 'http://120.55.87.80/server/Goods/' + uni.getStorageSync('enName') + 'Goods.php';
 			http.post(address, value).then(res => {
 				//这里是ES6的写法，get请求的地址
 				this.goods = res.data; //获取数据  
@@ -111,8 +112,9 @@
 
 	.platform-box {
 		width: 95%;
-		margin: 3% 5%;
+		margin: 0% 3%;
 		justify-content: center;
+		margin-bottom: 50rpx;
 
 		.platform-list {
 			width: 100%;
@@ -124,9 +126,9 @@
 			.platform {
 				width: 48%;
 				border-radius: 50rpx;
-				background-color: #fff;
+				background-color: #FFFFFF;
 				margin: 0 0 30rpx 0;
-				box-shadow: 0px 0px 10px 0px #d0d0d0;
+				// box-shadow: 0px 0px 10px 0px #d0d0d0;
 
 				.name {
 					width: 100%;

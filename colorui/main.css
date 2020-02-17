@@ -11,7 +11,7 @@
         初始化
  ==================== */
 body {
-	background-color: #f8f8f8;
+	background-color: #F5F6FA;
 	font-size: 24rpx;
 	color: #333333;
 	font-family: Helvetica Neue, Helvetica, sans-serif;
@@ -572,6 +572,10 @@ radio.white.checked .uni-radio-input {
 }
 
 /* -- 阴影 -- */
+
+.my-shadow {
+	box-shadow:0px 0px  10px 0px #d0d0d0;
+}
 
 .shadow[class*='white'] {
 	--ShadowSize: 0 1upx 6upx;

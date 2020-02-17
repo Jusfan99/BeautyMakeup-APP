@@ -14,7 +14,7 @@
 			<!-- <view class="title">{{uni.getStorageSync('catName')}}</view> -->
 			<view class="product-list">
 				<view class="product align-center" :key="product.price" v-for="product in productList" @tap="toGoods(product)">
-					<view class="img">
+					<view class="img align-center">
 						<image mode="widthFix" :src="product.img"></image>
 					</view>
 					<view class="name">{{ product.name }}</view>
@@ -36,7 +36,7 @@
 			}
 		},
 		created() { //此处用created相当于对前端页面数据进行初始化  
-			var address = 'http://120.55.87.80/server/' + uni.getStorageSync('enName') + '.php';
+			var address = 'http://120.55.87.80/server/smallList/' + uni.getStorageSync('enName') + '.php';
 			var value = uni.getStorageSync('brandName');
 			http.post(address, value).then(res => {
 				//这里是ES6的写法，get请求的地址
@@ -52,7 +52,6 @@
 		methods: {
 			//商品跳转
 			toGoods(e) {
-				uni.setStorageSync('PHP', 'ClassGoods');
 				uni.setStorageSync('goodsName', e.name);
 				uni.navigateTo({
 					url: "../goods/goods",
@@ -66,7 +65,7 @@
 
 <style lang="scss">
 	.header {
-		background-color: #F8F8F8;
+		background-color: #F5F6FA;
 		position: fixed;
 		top: auto;
 		z-index: 10;
@@ -91,21 +90,20 @@
 				justify-content: space-between;
 				background-color: #fff;
 				margin: 0 0 30rpx 0;
-				box-shadow: 0px 0px 10px 0px #d0d0d0;
+				// box-shadow: 0px 0px 10px 0px #d0d0d0;
 
 				.img {
 					width: 30%;
-					padding: 4% 4%;
-
+					padding: 4% 5%;
 					image {
-						border-radius: 50rpx 0 0rpx 50rpx;
+						// border-radius: 50rpx 0 0rpx 50rpx;
 					}
 				}
 
 				.name {
 					width: 70%;
 					padding-right: 40rpx;
-					text-align: justify;
+					text-align: center;
 					font-size: 30rpx;
 				}
 			}

@@ -193,7 +193,7 @@
 			text-align: center;
 			background-color: #CF6C7E;
 			border-radius: 50rpx;
-			box-shadow: 0rpx 8rpx 25rpx rgba(0, 0, 0, 0.2);
+			box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 
 			.headinfo {
 				display: inline-block;
@@ -204,7 +204,7 @@
 					width: 300rpx;
 					border-radius: 50rpx;
 					background-color: #FFFFFF;
-					box-shadow: 0rpx 8rpx 25rpx rgba(0, 0, 0, 0.2);
+					box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 					margin-top: 25rpx;
 					margin-left: 0rpx;
 				}
@@ -228,7 +228,7 @@
 					width: 200rpx;
 					height: 200rpx;
 					display: inline-block;
-					box-shadow: 0rpx 8rpx 25rpx rgba(0, 0, 0, 0.2);
+					box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 					border-radius: 100%;
 					image {
 						width: 200rpx;
@@ -242,6 +242,5 @@
 
 	.funlist {
 		margin-top: 25%;
-		box-shadow: 0px 0px 10px 0px #d0d0d0;
 	}
 </style>

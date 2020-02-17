@@ -120,9 +120,8 @@
 		},
 		//此处用created相当于对前端页面数据进行初始化
 		created() {
-			var address = 'http://120.55.87.80/server/Recommend.php';
+			var address = 'http://120.55.87.80/server/Reccommend/Recommend.php';
 			http.post(address, 'Recommend').then(res => {
-				//这里是ES6的写法，get请求的地址
 				this.productList = res.data; //获取数据  
 				console.log('success');
 				console.log(this.productList);
@@ -158,7 +157,7 @@
 			},
 			//商品跳转
 			toGoods(e) {
-				uni.setStorageSync('PHP', 'RecGoods');
+				uni.setStorageSync('enName', 'Rec');
 				uni.setStorageSync('goodsName', e.name);
 				uni.navigateTo({
 					url: "../goods/goods",
@@ -171,28 +170,6 @@
 </script>
 
 <style lang="scss">
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
-	}
-
-	.pullDown-effects {
-		position: fixed;
-		//top: calc(100rpx - 36vw);
-		top: 0;
-		z-index: 9;
-		width: 100%;
-		height: 36vw;
-		/*  #ifdef  APP-PLUS  */
-		padding-top: var(--status-bar-height);
-
-		/*  #endif  */
-		image {
-			width: 100%;
-			height: 36vw;
-		}
-	}
-
 	.swiper {
 		width: 100%;
 		display: flex;
@@ -203,7 +180,7 @@
 			height: 308rpx;
 			overflow: hidden;
 			border-radius: 50rpx;
-			box-shadow: 0rpx 8rpx 25rpx rgba(0, 0, 0, 0.2);
+			// box-shadow: 0rpx 8rpx 25rpx rgba(0, 0, 0, 0.2);
 			//兼容ios，微信小程序
 			position: relative;
 			z-index: 1;
@@ -233,7 +210,7 @@
 
 				.dots {
 					width: 0rpx;
-					background-color: rgba(255, 255, 255, 1);
+					background-color: #FFFFFF;
 					transition: all 0.3s ease-out;
 
 					&.on {
@@ -307,9 +284,9 @@
 			.product {
 				width: 48%;
 				border-radius: 50rpx;
-				background-color: #fff;
+				background-color: #FFFFFF;
 				margin: 0 0 30rpx 0;
-				box-shadow: 0px 0px 10px 0px #d0d0d0;
+				// box-shadow: 0px 0px 10px 0px #d0d0d0;
 
 				image {
 					width: 100%;
@@ -319,7 +296,8 @@
 
 				.name {
 					width: 100%;
-					padding: 4% 4% 4% 4%;
+					padding: 6% 6% 8% 8%;
+					color: #3c3c3c;
 					text-align: center;
 					justify-content: space-between;
 					overflow: hidden;
@@ -330,6 +308,7 @@
 
 		.bottom-text {
 			width: 100%;
+			margin-bottom: 20rpx;
 			display: flex;
 			justify-content: center;
 			align-items: center;

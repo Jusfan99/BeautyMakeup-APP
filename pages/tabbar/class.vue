@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="cu-bar search header">
-			<view class="search-form round" style="box-shadow:0px 0px  10px 0px #d0d0d0;">
+			<view class="search-form round my-shadow">
 				<text class="cuIcon-search"></text>
 				<input @focus="InputFocus" @blur="InputBlur" :adjust-position="false" type="text" placeholder="搜索美妆产品" confirm-type="search"></input>
 			</view>
@@ -10,23 +10,23 @@
 			</view>
 		</view>
 		<view class="VerticalBox">
-			<scroll-view class="VerticalNav nav shadow-blur" scroll-y scroll-with-animation>
+			<scroll-view class="VerticalNav nav" scroll-y scroll-with-animation>
 				<view class="cu-item" :class="index==showCategoryIndex?'text-mine cur':''" v-for="(category,index) in categoryList"
 				 :key="category.id" @tap="showCategory(index)" style="font-size: 28rpx;">
 					{{category.title}}
 				</view>
 			</scroll-view>
 
-			<scroll-view class="VerticalMain" scroll-y scroll-with-animation style="margin-top: 100rpx;" :scroll-into-view="'main-'+mainCur"
+			<scroll-view class="VerticalMain" scroll-y scroll-with-animation :scroll-into-view="'main-'+mainCur"
 			 @scroll="VerticalMain">
 				<view class="padding-top padding" v-for="(category,index) in categoryList" :key="category.id" v-show="index==showCategoryIndex">
-					<view class="cu-bar round-top solid-bottom bg-white" style="box-shadow:0px 0px  10px 0px #d0d0d0;">
+					<view class="cu-bar round-top solid-bottom bg-white">
 						<view class="action">
 							<text class="cuIcon-title text-mine"></text>{{category.title}}</view>
 					</view>
-					<view class="cu-list round-bottom menu-avatar" style="box-shadow:0px 0px  10px 0px #d0d0d0;">
+					<view class="cu-list round-bottom menu-avatar">
 						<view class="cu-item" v-for="(box,i) in category.list" :key="i" @tap="toCategory(box)">
-							<image class="cu-avatar headround lg" :src="'http://120.55.87.80/img/brand/'+box.img" style="box-shadow:0px 0px  10px 0px #d0d0d0;"></image>
+							<image class="cu-avatar headround lg my-shadow" :src="'http://120.55.87.80/img/brand/'+box.img"></image>
 							<view class="content">
 								<view style="color: #7A7E83;">{{box.name}}</view>
 							</view>
@@ -94,7 +94,7 @@
 							},
 							{
 								enname: 'Lipstick',
-								name: '魅可（M.A.C）',
+								name: 'M.A.C',
 								img: '10.jpg'
 							},
 							{
@@ -731,7 +731,7 @@
 
 <style lang="scss">
 	.header {
-		background-color: #F8F8F8;
+		background-color: #F5F6FA;
 		position: fixed;
 		top: auto;
 		z-index: 10;
@@ -786,7 +786,8 @@
 
 	.VerticalMain {
 		margin-left: 200upx;
-		background-color: #F8F8F8;
+		background-color: #F5F6FA;
 		flex: 1;
+		margin-top: 100rpx;
 	}
 </style>
