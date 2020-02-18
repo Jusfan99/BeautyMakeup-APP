@@ -42,6 +42,11 @@
 			"navigationStyle": "custom"
 		}
 	}, {
+		"path": "pages/search/search",
+		"style": {
+			
+		}
+	}, {
 		"path": "pages/shopweb/shopweb",
 		"style": {
 			"navigationBarTitleText": "SHOP"
