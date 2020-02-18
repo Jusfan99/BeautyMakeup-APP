@@ -43,8 +43,7 @@
 		}
 	}, {
 		"path": "pages/search/search",
-		"style": {
-			
+		"style": {	
 		}
 	}, {
 		"path": "pages/shopweb/shopweb",
